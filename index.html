@@ -179,9 +179,14 @@ html{touch-action:manipulation}
 .sth{height:130px;width:auto;margin-right:16px;border-radius:12px;background:#150a1a}.nav button{padding:2px 12px;margin:4px 2px;font-size:22px}
 .unit .sp img{height:680px}#enemy .sp img{height:640px}#enemy .sp svg{height:380px}#enemy.boss .sp svg{height:580px}
 .nav button{position:relative}#nvf[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;top:-10px;right:-4px;min-width:34px;height:34px;border-radius:17px;background:#e5484d;color:#fff;font:400 22px 'Lilita One',sans-serif;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.hh{display:flex;align-items:center;gap:14px;margin-right:auto}
+#av{width:96px;height:96px;border-radius:50%;border:4px solid #e2b04a;box-shadow:0 0 0 3px #7a4a14,0 0 14px #000a;background:#150a1a center/230% auto no-repeat;flex:none}
+.hn{font:400 32px 'Lilita One',sans-serif;color:#fff;text-shadow:0 2px 0 #000a;line-height:1.1}.hs{font:400 24px 'Lilita One',sans-serif;color:#ffd45c;line-height:1.1}
+.xp{width:300px;height:18px;border-radius:9px;background:#150a1a;border:3px solid #e2b04a;overflow:hidden;margin-top:4px}.xp i{display:block;height:100%;width:0;background:linear-gradient(#6fd3ff,#3b8ee0)}
+.btns.top{flex-wrap:wrap;gap:10px}.btns .btn.s{font-size:22px;padding:6px 14px}
 </style></head><body>
 <div id="app">
- <div class="top"><span class="chip"><span id="nm"></span> · Ур. <span id="lvl">1</span></span><span class="chip"><i class="ico coin"></i><span id="gold">0</span></span><span class="chip"><i class="ico gem"></i><span id="gems">0</span></span><button class="btn o gearbtn" id="cfg" aria-label="Настройки">⚙️</button></div>
+ <div class="top"><div class="hh"><div id="av"></div><div><div class="hn"><b id="nm"></b> · Ур. <span id="lvl">1</span></div><div class="hs">Сила: <span id="pw2"></span></div><div class="xp"><i id="xpf"></i></div></div></div><span class="chip"><i class="ico coin"></i><span id="gold">0</span></span><span class="chip"><i class="ico gem"></i><span id="gems">0</span></span><button class="btn o gearbtn" id="cfg" aria-label="Настройки">⚙️</button></div>
  <div class="stage"><b id="sname"></b><div class="dots" id="dots"></div><div class="bar" id="tbar" style="display:none"><i class="tm" id="tfill"></i></div></div>
  <div class="field" id="field"><svg class="scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b2f80"/><stop offset=".55" stop-color="#f08fb4"/><stop offset="1" stop-color="#ffd6bd"/></linearGradient></defs><rect width="400" height="300" fill="url(#k)"/><circle cx="290" cy="85" r="40" fill="#fff3d0" opacity=".85"/><path d="M0 190L60 120L110 170L170 100L240 180L300 130L360 175L400 140V240H0Z" fill="#7a4a9a" opacity=".8"/><path d="M0 215L80 165L150 205L230 160L320 200L400 170V250H0Z" fill="#5a3478"/><g fill="#34193f"><path d="M296 222h58v-34h-58z"/><path d="M286 188h78l-12-15h-54z"/><path d="M297 173h56l-9-13h-38z"/><path d="M310 160h30l-15-17z"/></g><rect x="36" y="170" width="8" height="60" fill="#5a2f45"/><g fill="#ff9ec4"><circle cx="40" cy="160" r="32"/><circle cx="72" cy="172" r="26"/><circle cx="20" cy="182" r="22"/></g><g fill="#ffc6dc" opacity=".8"><circle cx="30" cy="150" r="14"/><circle cx="62" cy="165" r="10"/></g><path d="M0 228Q200 205 400 228V300H0Z" fill="#c4709a"/><path d="M0 250Q200 232 400 250V300H0Z" fill="#a85580"/></svg>
   <div class="power">Сила: <span id="pw"></span></div>
@@ -191,7 +196,7 @@ html{touch-action:manipulation}
  <div class="skills" id="skills"></div>
  <div class="gear"><div class="grid" id="grid"></div></div>
  <div class="nav"><button id="nvf"><b>🛡️</b>Арсенал</button><button id="nvg"><b>🎰</b>Лудка</button><button id="nvc"><b>🏰</b>Клан</button><button id="nvs"><b>💎</b>Магазин</button><button id="nvd"><b>🎁</b>Награды</button><button id="nvk"><b>👗</b>Скины</button></div>
-<div id="mdl" hidden><div class="pn"><button class="x" id="mx" aria-label="Закрыть">✕</button><div class="ttl">Настройки</div><div class="row">Авто-навыки<button class="btn o" id="atg">ВКЛ</button></div><div class="row">Прогресс<button class="btn o" id="rst">Сбросить</button></div><div class="row">Друзья<button class="btn" id="shr">Позвать</button></div><div style="text-align:center;margin-top:28px"><button class="btn" id="sv">Готово</button></div></div></div>
+<div id="mdl" hidden><div class="pn"><button class="x" id="mx" aria-label="Закрыть">✕</button><div class="ttl">Настройки</div><div class="row">Авто-навыки<button class="btn o" id="atg">ВКЛ</button></div><div class="row">Прогресс<button class="btn o" id="rst">Сбросить</button></div><div class="row">Перерождение<button class="btn o" id="rbt">Открыть</button></div><div class="row">Друзья<button class="btn" id="shr">Позвать</button></div><div style="text-align:center;margin-top:28px"><button class="btn" id="sv">Готово</button></div></div></div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
@@ -201,22 +206,25 @@ const HERO='<svg viewBox="0 0 110 140"><path d="M20 50C2 80 8 122 30 128L42 72Z 
 const GEAR=[{n:'Посох',ic:'🪄',st:'atk',v:6},{n:'Шлем',ic:'🪖',st:'hp',v:40},{n:'Броня',ic:'🛡️',st:'hp',v:60},{n:'Сапоги',ic:'👢',st:'dodge',v:.6},{n:'Кольцо',ic:'💍',st:'crit',v:.8},{n:'Амулет',ic:'📿',st:'atk',v:4}];
 const SKILLS=[{ic:'🔥',cd:6,need:1,t:'dmg',m:3},{ic:'💚',cd:10,need:3,t:'heal',m:.35},{ic:'⚡',cd:8,need:6,t:'dmg',m:5}];
 function SKB(k){return ({rosara:{a:.1,h:.1,g:.25},priest:{a:.07,h:.07,g:.15},fox:{a:.1,h:.1,g:.6}}[S.skin]||{})[k]||0}
+function SB(k){const c=[0,0,0,0];(S.eset||[]).forEach(t=>{if(t>=0)c[t]++});let v=0;
+ const T=[{2:{a:.1},4:{a:.2},6:{a:.35,c:15}},{2:{d:8},4:{d:15,c:10},6:{d:25,c:20}},{2:{h:.15},4:{h:.3},6:{h:.55}},{2:{g:.2},4:{g:.5,p:.1},6:{g:1,p:.2}}];
+ c.forEach((n,i)=>{let b=null;[2,4,6].forEach(m=>{if(n>=m)b=T[i][m]});if(b&&b[k])v+=b[k]});return v}
 function CL(){return S.cl?S.cl.lv:0}
 const RM=[.6,1,1.5,2.4,4],RN=['Хлам','Обычный','Редкий','Эпический','Легендарный'],RC=['#9aa0a6','#ffffff','#4aa8ff','#b66bff','#ffb02e'];
-let S={st:1,gold:0,gems:0,gear:[1,1,1,0,0,0],auto:true,lvl:1,chests:[0,0,0],seen:{},rar:[1,1,1,1,1,1],bag:[],dl:{last:'',streak:0},cl:null,bought:{},adT:0,skin:'night',own:{night:1}};
+let S={st:1,gold:0,gems:0,gear:[1,1,1,0,0,0],auto:true,lvl:1,chests:[0,0,0],seen:{},rar:[1,1,1,1,1,1],bag:[],dl:{last:'',streak:0},cl:null,bought:{},adT:0,skin:'night',own:{night:1},lv:1,xp:0,reb:0,eset:[-1,-1,-1,-1,-1,-1]};
 try{const s=JSON.parse(localStorage.getItem('sakura1'));if(s)S=Object.assign(S,s)}catch(e){}
 const save=()=>{S.t=Date.now();if(window.Telegram&&Telegram.WebApp&&Telegram.WebApp.CloudStorage){clearTimeout(window.__ct);window.__ct=setTimeout(()=>{try{Telegram.WebApp.CloudStorage.setItem('sb1',JSON.stringify(S))}catch(e){}},4000)}try{localStorage.setItem('sakura1',JSON.stringify(S))}catch(e){}};
 const lv=i=>S.gear[i];
 const stat=k=>GEAR.reduce((a,g,i)=>g.st===k?a+g.v*lv(i)*RM[S.rar[i]]:a,0);
-const ATK=()=>(8+stat('atk'))*(Date.now()<buffT?2:1)*(1+.03*CL())*(1+SKB('a')),MAXHP=()=>(100+stat('hp'))*(1+.03*CL())*(1+SKB('h')),DODGE=()=>Math.min(40,stat('dodge')),CRIT=()=>Math.min(70,5+stat('crit'));
+const ATK=()=>(8+stat('atk'))*(Date.now()<buffT?2:1)*(1+.03*CL())*(1+SKB('a'))*(1+SB('a'))*(1-SB('p'))*(1+.01*S.lv)*(1+.1*S.reb),MAXHP=()=>(100+stat('hp'))*(1+.03*CL())*(1+SKB('h'))*(1+SB('h'))*(1+.01*S.lv)*(1+.1*S.reb),DODGE=()=>Math.min(40,stat('dodge')+SB('d')),CRIT=()=>Math.min(70,5+stat('crit')+SB('c'));
 const POWER=()=>ATK()*4+MAXHP()/5+DODGE()*10+CRIT()*8;
 const cost=i=>Math.floor(15*Math.pow(1.17,lv(i))*(1+i*.3));
 let wave=1,hp=MAXHP(),e=null,tHero=0,tEn=0,boss=0,cds=[0,0,0],tleft=0;
 const world=()=>WORLDS[Math.floor((S.st-1)/10)%WORLDS.length];
 const sub=()=>((S.st-1)%10)+1;
 function spawn(){
- const isB=wave===5,k=Math.pow(1.22,S.st-1),h=Math.floor((isB?220:60)*k);
- e={hp:h,max:h,atk:Math.floor((isB?14:8)*k),ic:isB?(S.st%10===0?WITCH:BOSSES[Math.floor((S.st-1)/10)%4]):MOBS[Math.floor(Math.random()*MOBS.length)],boss:isB,gold:Math.floor((isB?30:8)*k)};
+ const isB=wave===5,k=Math.pow(1.22,S.st-1),h=Math.floor((isB?220:60)*k*Math.pow(3,S.reb));
+ e={hp:h,max:h,atk:Math.floor((isB?14:8)*k*Math.pow(2,S.reb)),ic:isB?(S.st%10===0?WITCH:BOSSES[Math.floor((S.st-1)/10)%4]):MOBS[Math.floor(Math.random()*MOBS.length)],boss:isB,gold:Math.floor((isB?30:8)*k*(1+S.reb))};
  $('esp').innerHTML=e.ic;$('enemy').classList.toggle('boss',isB);
  $('tbar').style.display=isB?'block':'none';tleft=30;
  ui();if(!$('intro')){if(wave===1&&STORY['s'+S.st])beat('s'+S.st,STORY['s'+S.st]);if(wave===5&&STORY['b'+S.st])beat('b'+S.st,STORY['b'+S.st])}
@@ -228,8 +236,8 @@ function dmgEnemy(a,skill){
  e.hp-=d;if(c)hap('light');fl((c?'КРИТ ':'')+fmt(d),c||skill?'c':'d','enemy');pulse('enemy','hit');
  if(e.hp<=0)kill()}
 function kill(){
- S.gold+=Math.floor(e.gold*(1+.02*CL()+SKB('g')));drop(e.boss);if(e.boss)S.gems+=S.st%5===0?8:2;
- if(e.boss){const old=S.st;S.st++;wave=1;if(old%10===0)setTimeout(()=>after(old),700);S.lvl=1+Math.floor(S.st/2);toast('Этап пройден!')}else wave++;
+ gainXp(e.boss?30:6);S.gold+=Math.floor(e.gold*(1+.02*CL()+SKB('g')+SB('g')+.25*S.reb));drop(e.boss);if(e.boss)S.gems+=S.st%5===0?8:2;
+ if(e.boss){const old=S.st;S.st++;wave=1;if(old%10===0)setTimeout(()=>after(old),700);toast('Этап пройден!')}else wave++;
  hp=Math.min(MAXHP(),hp+MAXHP()*.1);save();spawn()}
 function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;$('field').appendChild(d);setTimeout(()=>d.remove(),1600)}
 function cast(i){
@@ -250,12 +258,12 @@ function tick(){if($('intro')||$('ov'))return;
 function bars(){$('hhp').style.width=Math.max(0,hp/MAXHP()*100)+'%';$('ehp').style.width=Math.max(0,e.hp/e.max*100)+'%';
  SKILLS.forEach((s,i)=>{const b=$('sk'+i);if(b)b.querySelector('i').style.height=cds[i]/s.cd*100+'%'})}
 function ui(){
- $('gold').textContent=fmt(S.gold);$('gems').textContent=S.gems;$('lvl').textContent=S.lvl;$('nm').textContent=S.name||'Герой';
+ $('gold').textContent=fmt(S.gold);$('gems').textContent=S.gems;$('lvl').textContent=S.lv;$('nm').textContent=(S.name||'Герой')+(S.reb?' ★'+S.reb:'');$('xpf').style.width=(S.lv>=100?100:S.xp/need(S.lv)*100)+'%';
  $('sname').textContent=world()+' '+['I','II','III','IV','V','VI','VII','VIII','IX','X'][sub()-1]+'  ·  '+Math.floor((S.st-1)/10)+1+'-'+sub();
  $('sname').textContent=world()+' '+sub()+'  ·  этап '+S.st;
  $('dots').innerHTML=[1,2,3,4,5].map(i=>`<span class="${i<wave?'on':''} ${i===5?'boss':''}"></span>`).join('');
- $('pw').innerHTML=fmt(POWER());
- $('grid').innerHTML=GEAR.map((g,i)=>`<button class="slot" data-i="${i}" style="--rc:${RC[S.rar[i]]}" ${S.gold<cost(i)?'disabled':''}><div class="ic">${g.ic}</div><div class="lv">${g.n} ${lv(i)}</div><small>${g.st==='atk'?'Атака':g.st==='hp'?'Здоровье':g.st==='crit'?'Крит':'Уклон'} +${+(g.v*lv(i)*RM[S.rar[i]]).toFixed(1)}</small><small style="color:${RC[S.rar[i]]}">${RN[S.rar[i]]}</small><div class="cost"><i class="ico coin"></i>${fmt(cost(i))}</div></button>`).join('');
+ $('pw').innerHTML=$('pw2').innerHTML=fmt(POWER());
+ $('grid').innerHTML=GEAR.map((g,i)=>`<button class="slot" data-i="${i}" style="--rc:${RC[S.rar[i]]}" ${S.gold<cost(i)?'disabled':''}><div class="ic">${g.ic}</div><div class="lv">${g.n} ${lv(i)}</div><small>${g.st==='atk'?'Атака':g.st==='hp'?'Здоровье':g.st==='crit'?'Крит':'Уклон'} +${+(g.v*lv(i)*RM[S.rar[i]]).toFixed(1)}</small><small style="color:${RC[S.rar[i]]}">${RN[S.rar[i]]}${S.eset[i]>=0?' · '+SN2[S.eset[i]]:''}</small><div class="cost"><i class="ico coin"></i>${fmt(cost(i))}</div></button>`).join('');
  $('skills').innerHTML=SKILLS.map((s,i)=>`<button class="sk ${S.st<s.need?'lock':''}" id="sk${i}" data-s="${i}" aria-label="Навык ${i+1}">${S.st<s.need?'🔒':s.ic}<i></i></button>`).join('')+`<button class="auto ${S.auto?'on':''}" id="auto">АВТО ${S.auto?'ВКЛ':'ВЫКЛ'}</button><button class="chb ${S.chests.some(Boolean)?'has':''}" id="chb" aria-label="Сундуки">${chestSVG(TC[S.chests[2]?2:S.chests[1]?1:0])}<b>${S.chests.reduce((a,b)=>a+b)}</b></button>`}
 document.addEventListener('click',ev=>{
  const g=ev.target.closest('.slot'),k=ev.target.closest('.sk'),a=ev.target.closest('#auto');
@@ -335,7 +343,7 @@ const rr=t=>{const x=Math.random()*100;let r=0;while(r<4&&x>=t[r])r++;return r};
 const sell=r=>Math.floor((6+r*r*14)*Math.pow(1.2,S.st-1));
 function drop(b){let c=-1;if(b){c=S.st%10===0?2:S.st%5===0?1:Math.random()<.3?0:-1}else if(Math.random()<.025)c=0;
  if(c>=0){S.chests[c]++;fl('Сундук!','c','enemy')}
- if(Math.random()<(b?.5:.07))item({s:Math.floor(Math.random()*6),r:rr(b?[30,65,90,98]:[55,88,97,99.5])})}
+ if(Math.random()<(b?.5:.07))item(mk(Math.floor(Math.random()*6),rr(b?[30,65,90,98]:[55,88,97,99.5])))}
 function item(it){const cur=S.rar[it.s],g=GEAR[it.s];
  if(it.r<=cur){const v=sell(it.r);S.gold+=v;fl(RN[it.r]+' '+g.n+' → '+fmt(v),'d','enemy');return}
  popup('Новый предмет','<div class="chs big" style="text-align:center">'+g.ic+'</div><div class="row rw" style="color:'+RC[it.r]+'">'+g.n+' · '+RN[it.r]+'</div><div class="row rw" style="font-size:26px">Сейчас: <span style="color:'+RC[cur]+'">'+RN[cur]+'</span></div>','Надеть',()=>{S.gold+=sell(cur);S.rar[it.s]=it.r;ui();save()},'Продать',()=>{S.gold+=sell(it.r);ui();save()})}
@@ -355,21 +363,21 @@ function bagAdd(it){if(S.bag.length>=40){const m=Math.min(...S.bag.map(b=>b.r));
 const bl=()=>{$('nvf').dataset.n=S.bag.length||''};
 function item(it){bagAdd(it);const up=it.r>S.rar[it.s];fl((up?'★ ':'')+RN[it.r]+' '+GEAR[it.s].n,up?'c':'d','enemy')}
 act['Лудка']=b=>{const n=+b.dataset.a,c=n===1?10:90;if(S.gems<c)return 'Не хватает кристаллов';S.gems-=c;let L=[];
- for(let k=0;k<n;k++){const it={s:Math.floor(Math.random()*6),r:rr([20,50,80,95])};bagAdd(it);L.push('<span style="color:'+RC[it.r]+'">'+RN[it.r]+' '+GEAR[it.s].n+'</span>')}
+ for(let k=0;k<n;k++){const it=mk(Math.floor(Math.random()*6),rr([20,50,80,95]));bagAdd(it);L.push('<span style="color:'+RC[it.r]+'">'+RN[it.r]+' '+GEAR[it.s].n+'</span>')}
  return L.join('<br>')+'<br>— всё в Арсенале'};
 function arsenal(){if($('ov'))return;const o=document.createElement('div');o.id='ov';o.className='ov c';$('app').appendChild(o);
  let sel={s:'eq',i:0};const hs=$('hsp').querySelector('img').src;
- const tile=(it,on,a)=>'<button class="it'+(on?' on':'')+'" style="--rc:'+RC[it.r]+'" '+a+'>'+GEAR[it.s].ic+'<small>'+RN[it.r]+'</small></button>';
+ const tile=(it,on,a)=>'<button class="it'+(on?' on':'')+'" style="--rc:'+RC[it.r]+'" '+a+'>'+GEAR[it.s].ic+'<small>'+RN[it.r]+'</small>'+(it.t>=0?'<small style="color:'+SC[it.t]+'">'+SN2[it.t]+'</small>':'')+'</button>';
  const d=m=>{if(sel.s==='bag'&&!S.bag[sel.i])sel={s:'eq',i:0};
-  const eq=sel.s==='eq',it=eq?{s:sel.i,r:S.rar[sel.i]}:S.bag[sel.i],g=GEAR[it.s],val=+(g.v*lv(it.s)*RM[it.r]).toFixed(1);
-  o.innerHTML='<div class="pn arm"><button class="x">✕</button><div class="ttl">Арсенал</div><div class="al"><div class="hr"><img alt="" src="'+hs+'"><div class="eq">'+GEAR.map((g,i)=>tile({s:i,r:S.rar[i]},eq&&sel.i===i,'data-e="'+i+'"')).join('')+'</div></div><div class="ar"><div class="bg">'+(S.bag.length?S.bag.map((b,i)=>tile(b,!eq&&sel.i===i,'data-b="'+i+'"')).join(''):'<div class="emp">Сумка пуста. Убивай врагов и боссов или крути Лудку!</div>')+'</div><div class="dt"><div class="dn" style="color:'+RC[it.r]+'">'+g.n+' · '+RN[it.r]+(eq?' (надето)':'')+'</div><div>'+SN[g.st]+' +'+val+' &nbsp; <i class="ico coin"></i>'+fmt(S.gold)+'</div><div class="btns">'+(eq?'':'<button class="btn" data-x="eq">Надеть</button>')+(it.r<4?'<button class="btn o" data-x="up"><i class="ico coin"></i>'+fmt(fc(it.r))+' · улучшить '+Math.round(CH[it.r]*100)+'%</button>':'<b style="color:#ffb02e">МАКС</b>')+(eq?'':'<button class="btn o" data-x="sl">Продать '+fmt(sell(it.r))+'</button>')+'</div><div style="min-height:34px;color:#ffd45c">'+(m||'')+'</div></div></div></div></div>';
+  const eq=sel.s==='eq',it=eq?{s:sel.i,r:S.rar[sel.i],t:S.eset[sel.i]}:S.bag[sel.i],g=GEAR[it.s],val=+(g.v*lv(it.s)*RM[it.r]).toFixed(1);
+  o.innerHTML='<div class="pn arm"><button class="x">✕</button><div class="ttl">Арсенал</div><div class="al"><div class="hr"><img alt="" src="'+hs+'"><div class="eq">'+GEAR.map((g,i)=>tile({s:i,r:S.rar[i],t:S.eset[i]},eq&&sel.i===i,'data-e="'+i+'"')).join('')+'</div></div><div class="ar"><div class="btns top"><button class="btn s" data-x="best">Надеть лучшее</button><button class="btn o s" data-x="junk">Продать хлам</button>'+[0,1,2,3].map(i=>'<button class="btn s" style="background:'+SC[i]+';color:#222;text-shadow:none" data-x="set'+i+'">'+SN2[i]+'</button>').join('')+'</div><div class="bg">'+(S.bag.length?S.bag.map((b,i)=>tile(b,!eq&&sel.i===i,'data-b="'+i+'"')).join(''):'<div class="emp">Сумка пуста. Убивай врагов и боссов или крути Лудку!</div>')+'</div><div class="dt"><div class="dn" style="color:'+RC[it.r]+'">'+g.n+' · '+RN[it.r]+(it.t>=0?' · '+SN2[it.t]:'')+(eq?' (надето)':'')+'</div><div>'+SN[g.st]+' +'+val+' &nbsp; <i class="ico coin"></i>'+fmt(S.gold)+'</div><div class="btns">'+(eq?'':'<button class="btn" data-x="eq">Надеть</button>')+(it.r<4?'<button class="btn o" data-x="up"><i class="ico coin"></i>'+fmt(fc(it.r))+' · улучшить '+Math.round(CH[it.r]*100)+'%</button>':'<b style="color:#ffb02e">МАКС</b>')+(eq?'':'<button class="btn o" data-x="sl">Продать '+fmt(sell(it.r))+'</button>')+'</div>'+sumSets()+'<div style="min-height:34px;color:#ffd45c">'+(m||'')+'</div></div></div></div></div>';
   o.querySelector('.x').onclick=()=>{o.remove();ui();bl();save()};
   o.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>{sel={s:'eq',i:+b.dataset.e};d()});
   o.querySelectorAll('[data-b]').forEach(b=>b.onclick=()=>{sel={s:'bag',i:+b.dataset.b};d()});
   o.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{const x=b.dataset.x;
-   if(x==='eq'){const n=S.bag[sel.i];S.bag.splice(sel.i,1);S.bag.push({s:n.s,r:S.rar[n.s]});S.rar[n.s]=n.r;sel={s:'eq',i:n.s};d('Надето!')}
+   if(x==='best'){bestAll();sel={s:'eq',i:0};d('Надето лучшее')}else if(x==='junk'){const g=sellJunk();sel={s:'eq',i:0};d('Продано хлама: '+g)}else if(x.startsWith('set')){wearSet(+x[3]);sel={s:'eq',i:0};d('Надет сет: '+SN2[+x[3]])}else if(x==='eq'){const n=S.bag[sel.i];S.bag.splice(sel.i,1);S.bag.push({s:n.s,r:S.rar[n.s],t:S.eset[n.s]});S.rar[n.s]=n.r;S.eset[n.s]=n.t==null?-1:n.t;sel={s:'eq',i:n.s};d('Надето!')}
    else if(x==='sl'){S.gold+=sell(it.r);S.bag.splice(sel.i,1);d('Продано')}
-   else{const c=fc(it.r);if(S.gold<c){d('Не хватает золота');return}S.gold-=c;if(Math.random()<CH[it.r]){if(eq)S.rar[sel.i]++;else it.r++;d('Успех! Редкость выросла')}else d('Не вышло, золото потеряно')}
+   else{const c=fc(it.r);if(S.gold<c){d('Не хватает золота');return}S.gold-=c;if(Math.random()<CH[it.r]){if(eq){S.rar[sel.i]++;if(S.rar[sel.i]>=2&&S.eset[sel.i]<0)S.eset[sel.i]=Math.floor(Math.random()*4)}else{it.r++;if(it.r>=2&&!(it.t>=0))it.t=Math.floor(Math.random()*4)}d('Успех! Редкость выросла')}else d('Не вышло, золото потеряно')}
    save()})};d()}
 $('nvf').onclick=arsenal;bl();
 const TG=window.Telegram&&Telegram.WebApp&&Telegram.WebApp.initData!==undefined?Telegram.WebApp:null;
@@ -379,7 +387,7 @@ if(TG){try{TG.ready();TG.expand();TG.setHeaderColor('#2b1633');TG.setBackgroundC
  TG.CloudStorage.getItem('sb1',(er,v)=>{if(er||!v)return;try{const r=JSON.parse(v);if(r.t>(S.t||0)){Object.assign(S,r);if($('intro')&&S.name)$('intro').remove();hp=MAXHP();wave=1;spawn();ui();bl();applySkin()}}catch(x){}})}catch(x){}}
 $('shr').onclick=()=>{const l='https://t.me/share/url?url='+encodeURIComponent('https://t.me/AnimeArena_RPG_bot')+'&text='+encodeURIComponent('Заходи в Sakura Blade Arena!');TG?TG.openTelegramLink(l):window.open(l,'_blank')};
 const today=()=>new Date().toLocaleDateString('sv'),dg=m=>Math.floor(120*m*Math.pow(1.22,S.st-1));
-const DAILY=[['<i class="ico coin"></i>','Золото',()=>S.gold+=dg(1)],['💎','5 кристаллов',()=>S.gems+=5],['📦','Бронзовый сундук',()=>S.chests[0]++],['<i class="ico coin"></i>','Много золота',()=>S.gold+=dg(3)],['💎','10 кристаллов',()=>S.gems+=10],['📦','Серебряный сундук',()=>S.chests[1]++],['👑','Золотой сундук, 20 💎, эпик',()=>{S.chests[2]++;S.gems+=20;bagAdd({s:Math.floor(Math.random()*6),r:3})}]];
+const DAILY=[['<i class="ico coin"></i>','Золото',()=>S.gold+=dg(1)],['💎','5 кристаллов',()=>S.gems+=5],['📦','Бронзовый сундук',()=>S.chests[0]++],['<i class="ico coin"></i>','Много золота',()=>S.gold+=dg(3)],['💎','10 кристаллов',()=>S.gems+=10],['📦','Серебряный сундук',()=>S.chests[1]++],['👑','Золотой сундук, 20 💎, эпик',()=>{S.chests[2]++;S.gems+=20;bagAdd(mk(Math.floor(Math.random()*6),3))}]];
 function daily(force){if($('ov')||$('intro')){setTimeout(()=>daily(force),1500);return}
  const t=today(),can=S.dl.last!==t;if(!can&&!force)return;
  const y=new Date(Date.now()-864e5).toLocaleDateString('sv'),st=can?(S.dl.last===y?S.dl.streak:0)+1:S.dl.streak,idx=Math.max(0,(st-1)%7);
@@ -392,7 +400,7 @@ act['Клан']=b=>{const a=b.dataset.a,c=S.cl;
 const clan=()=>panel('Клан',m=>{const c=S.cl;if(!c)return '<div class="row rw" style="font-size:30px">Создай клан: он даёт бонус к атаке, здоровью и золоту. Клан с друзьями онлайн появится позже.</div><input id="cin" class="cin" maxlength="16" placeholder="Название клана"><div style="text-align:center"><button class="btn" data-a="mk">Создать</button></div>';
  return '<div class="row rw">'+c.n.replace(/</g,'&lt;')+' · ур. '+c.lv+'</div><div class="row rw" style="font-size:30px">Бонус: ⚔️❤️ +'+3*c.lv+'% · <i class="ico coin"></i> +'+2*c.lv+'%</div>'+(m?'<div class="row rw" style="font-size:28px;text-align:center">'+m+'</div>':'')+'<div class="btns" style="justify-content:center;flex-wrap:wrap"><button class="btn o" data-a="up">Улучшить <i class="ico coin"></i>'+fmt(cc(c.lv))+'</button><button class="btn" data-a="raid">'+(c.raid===today()?'Рейд завтра':'Рейд босса')+'</button></div>'});
 const API='',AD=null,PACKS=[{id:'s1',n:'Стартовый набор',d:'3 золотых сундука, 200 💎, эпик',p:100,once:1},{id:'g1',n:'Горсть кристаллов',d:'+100 💎',p:50},{id:'g2',n:'Мешок кристаллов',d:'+650 💎',p:250},{id:'g3',n:'Сундук богатств',d:'+3000 💎',p:1000}];
-function grant(id){if(id==='s1'){S.chests[2]+=3;S.gems+=200;bagAdd({s:Math.floor(Math.random()*6),r:3});S.bought.s1=1}else S.gems+={g1:100,g2:650,g3:3000}[id];save();ui()}
+function grant(id){if(id==='s1'){S.chests[2]+=3;S.gems+=200;bagAdd(mk(Math.floor(Math.random()*6),3));S.bought.s1=1}else S.gems+={g1:100,g2:650,g3:3000}[id];save();ui()}
 act['Магазин']=b=>{const a=b.dataset.a;
  if(a==='ad'){if(!AD)return 'Реклама подключится после регистрации в рекламной сети';if(Date.now()-S.adT<144e5)return 'Следующая реклама через несколько часов';return AD().then(()=>{S.gems+=10;S.adT=Date.now();save()}),'Награда: 10 кристаллов'}
  if(!API)return 'Оплата пока в демо-режиме: включится после запуска сервера';
@@ -401,9 +409,21 @@ const shop=()=>panel('Магазин',m=>(m?'<div class="row rw" style="font-siz
 $('nvc').onclick=clan;$('nvs').onclick=shop;$('nvd').onclick=()=>daily(true);setTimeout(()=>daily(),1200);
 const SKINS=[{id:'night',n:'Клинок Ночи',r:1,img:'assets/hero.webp?v=5',d:'Начальный облик'},{id:'rosara',n:'Розара',r:3,img:'assets/witch.webp?v=2',d:'⚔️❤️ +10% · <i class="ico coin"></i> +25%',lock:'Победи Розару на 10 этапе'},{id:'priest',n:'Жрица Падшего Света',r:3,img:'assets/priest.webp?v=3',d:'⚔️❤️ +7% · <i class="ico coin"></i> +15%',st:15,lock:'Дойди до 15 этапа'},{id:'fox',n:'Кицунэ Тёмной Луны',r:4,img:'assets/fox.webp?v=3',d:'⚔️❤️ +10% · <i class="ico coin"></i> +60%',gem:1500,lock:'1500 кристаллов'}];
 function chk(){SKINS.forEach(k=>{if(k.st&&S.st>=k.st)S.own[k.id]=1})}
-function applySkin(){const k=SKINS.find(x=>x.id===S.skin)||SKINS[0];$('hsp').querySelector('img').src=k.img}
+function applySkin(){const k=SKINS.find(x=>x.id===S.skin)||SKINS[0];$('hsp').querySelector('img').src=k.img;$('av').style.backgroundImage='url('+k.img+')';$('av').style.backgroundPosition='45% 4%'}
 act['Скины']=b=>{const k=SKINS.find(x=>x.id===b.dataset.a);chk();if(!S.own[k.id]){if(k.gem&&S.gems>=k.gem){S.gems-=k.gem;S.own[k.id]=1}else return k.gem?'Не хватает кристаллов ('+k.gem+')':k.lock}S.skin=k.id;applySkin();save();return 'Надето: '+k.n};
 const skins=()=>panel('Скины',m=>(chk(),m?'<div class="row rw" style="font-size:28px;text-align:center">'+m+'</div>':'')+SKINS.map(k=>'<div class="row fr"><img class="sth" alt="" src="'+k.img+'"><span style="flex:1;color:'+RC[k.r]+'">'+k.n+'<br><small style="font-size:22px;color:#fff">'+k.d+'</small></span>'+(S.skin===k.id?'<b style="color:#7fe36a">Надето</b>':S.own[k.id]?'<button class="btn" data-a="'+k.id+'">Надеть</button>':'<button class="btn o" data-a="'+k.id+'">'+(k.gem?'<i class="ico gem"></i>'+k.gem:'🔒')+'</button>')+'</div>').join('')+'<div class="row rw" style="font-size:26px;opacity:.7;text-align:center">Новые скины скоро</div>');
 $('nvk').onclick=skins;applySkin();
+const SN2=['Силовик','Ловкач','Страж','Золотоискатель'],SC=['#ff6b6b','#6bff9c','#6bb6ff','#ffd24a'];
+const SD=[['+10% атаки','+20% атаки','+35% атаки, +15% крита'],['+8% уклона','+15% уклона, +10% крита','+25% уклона, +20% крита'],['+15% здоровья','+30% здоровья','+55% здоровья'],['+20% золота','+50% золота, −10% урона','+100% золота, −20% урона']];
+const mk=(s,r)=>({s,r,t:r>=2?Math.floor(Math.random()*4):-1});
+const need=l=>Math.floor(30*Math.pow(1.105,l-1));
+function gainXp(b){S.xp+=Math.floor(b*Math.pow(1.095,S.st-1)*(1+.25*S.reb));let up=0;while(S.lv<100&&S.xp>=need(S.lv)){S.xp-=need(S.lv);S.lv++;up++}if(S.lv>=100)S.xp=Math.min(S.xp,need(100));if(up)toast(S.lv>=100?'100 уровень! Доступно перерождение':'Уровень '+S.lv+'!')}
+function sumSets(){const c=[0,0,0,0];S.eset.forEach(t=>{if(t>=0)c[t]++});return '<div style="font-size:23px;margin-top:6px">'+c.map((n,i)=>'<span style="color:'+SC[i]+'">'+SN2[i]+' '+n+'/6'+(n>=2?' ('+SD[i][n>=6?2:n>=4?1:0]+')':'')+'</span>').join('<br>')+'</div>'}
+function bestAll(){for(let s=0;s<6;s++){let bi=-1;S.bag.forEach((b,i)=>{if(b.s===s&&b.r>S.rar[s]&&(bi<0||b.r>S.bag[bi].r))bi=i});if(bi>=0){const n=S.bag[bi];S.bag.splice(bi,1);S.bag.push({s,r:S.rar[s],t:S.eset[s]});S.rar[s]=n.r;S.eset[s]=n.t==null?-1:n.t}}bl()}
+function sellJunk(){let g=0;S.bag=S.bag.filter(b=>{if(b.r<=0){g+=sell(0);return false}return true});S.gold+=g;bl();return fmt(g)}
+function wearSet(t){for(let s=0;s<6;s++){let bi=-1;S.bag.forEach((b,i)=>{if(b.s===s&&b.t===t&&(bi<0||b.r>S.bag[bi].r))bi=i});if(bi<0)continue;const n=S.bag[bi];if(S.eset[s]===t&&S.rar[s]>=n.r)continue;S.bag.splice(bi,1);S.bag.push({s,r:S.rar[s],t:S.eset[s]});S.rar[s]=n.r;S.eset[s]=t}bl()}
+function rebirth(){if(S.lv<100){popup('Перерождение','<div class="row rw" style="font-size:30px;text-align:center">Нужен 100 уровень (сейчас '+S.lv+').<br>За каждое перерождение: +10% к атаке и здоровью, +25% к золоту и опыту навсегда. Враги становятся сильнее: здоровье ×3, урон ×2.</div>','Понятно');return}
+ popup('Перерождение №'+(S.reb+1),'<div class="row rw" style="font-size:30px;text-align:center">Сбросятся: уровень, этап, золото, улучшения слотов и обычные вещи.<br>Останутся: кристаллы, скины, клан и легендарные вещи.<br>Награда: +10% атаки и здоровья, +25% золота и опыта навсегда.</div>','Переродиться',()=>{S.reb++;S.st=1;S.gold=0;S.gear=[1,1,1,0,0,0];S.lv=1;S.xp=0;for(let i=0;i<6;i++)if(S.rar[i]<4){S.rar[i]=1;S.eset[i]=-1}S.bag=S.bag.filter(b=>b.r>=4);wave=1;hp=MAXHP();spawn();ui();bl();save()},'Отмена')}
+$('rbt').onclick=()=>{$('mdl').hidden=true;rebirth()};
 let acc=0;spawn();if(!S.name)intro();setInterval(()=>{tick();if(++acc%5===0){$('gold').textContent=fmt(S.gold);document.querySelectorAll('.slot').forEach(b=>b.disabled=S.gold<cost(+b.dataset.i))}},100);
 </script></body></html>
