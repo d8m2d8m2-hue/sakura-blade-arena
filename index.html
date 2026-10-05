@@ -177,6 +177,8 @@ html{touch-action:manipulation}
 .dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0}.dy{background:#1a0d20;border:3px solid #e2b04a;border-radius:14px;padding:10px 4px;text-align:center;font:400 24px 'Lilita One',sans-serif}.dy b{display:block;font-size:44px;font-weight:400}.dy.cur{box-shadow:0 0 22px #ffc84a;border-color:#fff}.dy.done{opacity:.4}
 .cin{width:100%;font:inherit;font-size:34px;padding:10px 14px;border-radius:12px;border:2px solid #ffc84a;background:#2a1233;color:#fff;margin:12px 0}
 .sth{height:130px;width:auto;margin-right:16px;border-radius:12px;background:#150a1a}.nav button{padding:2px 12px;margin:4px 2px;font-size:22px}
+.unit .sp img{height:680px}#enemy .sp img{height:640px}#enemy .sp svg{height:380px}#enemy.boss .sp svg{height:580px}
+.nav button{position:relative}#nvf[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;top:-10px;right:-4px;min-width:34px;height:34px;border-radius:17px;background:#e5484d;color:#fff;font:400 22px 'Lilita One',sans-serif;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
 </style></head><body>
 <div id="app">
  <div class="top"><span class="chip"><span id="nm"></span> · Ур. <span id="lvl">1</span></span><span class="chip"><i class="ico coin"></i><span id="gold">0</span></span><span class="chip"><i class="ico gem"></i><span id="gems">0</span></span><button class="btn o gearbtn" id="cfg" aria-label="Настройки">⚙️</button></div>
@@ -350,7 +352,7 @@ const gacha=()=>panel('Лудка',m=>'<div class="row rw" style="font-size:28px
 $('nvf').onclick=forge;$('nvg').onclick=gacha;
 const SN={atk:'Атака',hp:'Здоровье',crit:'Крит',dodge:'Уклон'};
 function bagAdd(it){if(S.bag.length>=40){const m=Math.min(...S.bag.map(b=>b.r));S.gold+=sell(m);S.bag.splice(S.bag.findIndex(b=>b.r===m),1)}S.bag.push(it);bl()}
-const bl=()=>{$('nvf').lastChild.textContent='Арсенал'+(S.bag.length?' ('+S.bag.length+')':'')};
+const bl=()=>{$('nvf').dataset.n=S.bag.length||''};
 function item(it){bagAdd(it);const up=it.r>S.rar[it.s];fl((up?'★ ':'')+RN[it.r]+' '+GEAR[it.s].n,up?'c':'d','enemy')}
 act['Лудка']=b=>{const n=+b.dataset.a,c=n===1?10:90;if(S.gems<c)return 'Не хватает кристаллов';S.gems-=c;let L=[];
  for(let k=0;k<n;k++){const it={s:Math.floor(Math.random()*6),r:rr([20,50,80,95])};bagAdd(it);L.push('<span style="color:'+RC[it.r]+'">'+RN[it.r]+' '+GEAR[it.s].n+'</span>')}
@@ -377,7 +379,7 @@ if(TG){try{TG.ready();TG.expand();TG.setHeaderColor('#2b1633');TG.setBackgroundC
  TG.CloudStorage.getItem('sb1',(er,v)=>{if(er||!v)return;try{const r=JSON.parse(v);if(r.t>(S.t||0)){Object.assign(S,r);if($('intro')&&S.name)$('intro').remove();hp=MAXHP();wave=1;spawn();ui();bl();applySkin()}}catch(x){}})}catch(x){}}
 $('shr').onclick=()=>{const l='https://t.me/share/url?url='+encodeURIComponent('https://t.me/AnimeArena_RPG_bot')+'&text='+encodeURIComponent('Заходи в Sakura Blade Arena!');TG?TG.openTelegramLink(l):window.open(l,'_blank')};
 const today=()=>new Date().toLocaleDateString('sv'),dg=m=>Math.floor(120*m*Math.pow(1.22,S.st-1));
-const DAILY=[['🪙','Золото',()=>S.gold+=dg(1)],['💎','5 кристаллов',()=>S.gems+=5],['📦','Бронзовый сундук',()=>S.chests[0]++],['🪙','Много золота',()=>S.gold+=dg(3)],['💎','10 кристаллов',()=>S.gems+=10],['📦','Серебряный сундук',()=>S.chests[1]++],['👑','Золотой сундук, 20 💎, эпик',()=>{S.chests[2]++;S.gems+=20;bagAdd({s:Math.floor(Math.random()*6),r:3})}]];
+const DAILY=[['<i class="ico coin"></i>','Золото',()=>S.gold+=dg(1)],['💎','5 кристаллов',()=>S.gems+=5],['📦','Бронзовый сундук',()=>S.chests[0]++],['<i class="ico coin"></i>','Много золота',()=>S.gold+=dg(3)],['💎','10 кристаллов',()=>S.gems+=10],['📦','Серебряный сундук',()=>S.chests[1]++],['👑','Золотой сундук, 20 💎, эпик',()=>{S.chests[2]++;S.gems+=20;bagAdd({s:Math.floor(Math.random()*6),r:3})}]];
 function daily(force){if($('ov')||$('intro')){setTimeout(()=>daily(force),1500);return}
  const t=today(),can=S.dl.last!==t;if(!can&&!force)return;
  const y=new Date(Date.now()-864e5).toLocaleDateString('sv'),st=can?(S.dl.last===y?S.dl.streak:0)+1:S.dl.streak,idx=Math.max(0,(st-1)%7);
@@ -388,7 +390,7 @@ act['Клан']=b=>{const a=b.dataset.a,c=S.cl;
  if(a==='up'){if(c.lv>=20)return 'Максимальный уровень';if(S.gold<cc(c.lv))return 'Не хватает золота';S.gold-=cc(c.lv);c.lv++;save();return 'Клан вырос до '+c.lv+' ур.!'}
  if(c.raid===today())return 'Рейд уже был сегодня';c.raid=today();const g=3+Math.floor(c.lv/2);S.gems+=g;S.chests[1]++;save();return 'Клановый босс повержен! Урон '+fmt(POWER()*(8+Math.random()*4))+'. Награда: '+g+' кристаллов и серебряный сундук'};
 const clan=()=>panel('Клан',m=>{const c=S.cl;if(!c)return '<div class="row rw" style="font-size:30px">Создай клан: он даёт бонус к атаке, здоровью и золоту. Клан с друзьями онлайн появится позже.</div><input id="cin" class="cin" maxlength="16" placeholder="Название клана"><div style="text-align:center"><button class="btn" data-a="mk">Создать</button></div>';
- return '<div class="row rw">'+c.n.replace(/</g,'&lt;')+' · ур. '+c.lv+'</div><div class="row rw" style="font-size:30px">Бонус: ⚔️❤️ +'+3*c.lv+'% · 🪙 +'+2*c.lv+'%</div>'+(m?'<div class="row rw" style="font-size:28px;text-align:center">'+m+'</div>':'')+'<div class="btns" style="justify-content:center;flex-wrap:wrap"><button class="btn o" data-a="up">Улучшить <i class="ico coin"></i>'+fmt(cc(c.lv))+'</button><button class="btn" data-a="raid">'+(c.raid===today()?'Рейд завтра':'Рейд босса')+'</button></div>'});
+ return '<div class="row rw">'+c.n.replace(/</g,'&lt;')+' · ур. '+c.lv+'</div><div class="row rw" style="font-size:30px">Бонус: ⚔️❤️ +'+3*c.lv+'% · <i class="ico coin"></i> +'+2*c.lv+'%</div>'+(m?'<div class="row rw" style="font-size:28px;text-align:center">'+m+'</div>':'')+'<div class="btns" style="justify-content:center;flex-wrap:wrap"><button class="btn o" data-a="up">Улучшить <i class="ico coin"></i>'+fmt(cc(c.lv))+'</button><button class="btn" data-a="raid">'+(c.raid===today()?'Рейд завтра':'Рейд босса')+'</button></div>'});
 const API='',AD=null,PACKS=[{id:'s1',n:'Стартовый набор',d:'3 золотых сундука, 200 💎, эпик',p:100,once:1},{id:'g1',n:'Горсть кристаллов',d:'+100 💎',p:50},{id:'g2',n:'Мешок кристаллов',d:'+650 💎',p:250},{id:'g3',n:'Сундук богатств',d:'+3000 💎',p:1000}];
 function grant(id){if(id==='s1'){S.chests[2]+=3;S.gems+=200;bagAdd({s:Math.floor(Math.random()*6),r:3});S.bought.s1=1}else S.gems+={g1:100,g2:650,g3:3000}[id];save();ui()}
 act['Магазин']=b=>{const a=b.dataset.a;
@@ -397,7 +399,7 @@ act['Магазин']=b=>{const a=b.dataset.a;
  fetch(API+'/invoice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:a,init:TG?TG.initData:''})}).then(r=>r.json()).then(j=>TG.openInvoice(j.link,st=>{if(st==='paid')grant(a)}));return 'Открываю оплату...'};
 const shop=()=>panel('Магазин',m=>(m?'<div class="row rw" style="font-size:28px;text-align:center">'+m+'</div>':'')+PACKS.filter(p=>!(p.once&&S.bought[p.id])).map(p=>'<div class="row fr"><span style="flex:1">'+p.n+'<br><small style="font-size:22px;opacity:.8">'+p.d+'</small></span><button class="btn o" data-a="'+p.id+'">⭐ '+p.p+'</button></div>').join('')+'<div class="row fr"><span style="flex:1">Бесплатно: реклама<br><small style="font-size:22px;opacity:.8">+10 💎 каждые 4 часа</small></span><button class="btn" data-a="ad">Смотреть</button></div>');
 $('nvc').onclick=clan;$('nvs').onclick=shop;$('nvd').onclick=()=>daily(true);setTimeout(()=>daily(),1200);
-const SKINS=[{id:'night',n:'Клинок Ночи',r:1,img:'assets/hero.webp?v=5',d:'Начальный облик'},{id:'rosara',n:'Розара',r:3,img:'assets/witch.webp?v=2',d:'⚔️❤️ +10% · 🪙 +25%',lock:'Победи Розару на 10 этапе'},{id:'priest',n:'Жрица Падшего Света',r:3,img:'assets/priest.webp?v=3',d:'⚔️❤️ +7% · 🪙 +15%',st:15,lock:'Дойди до 15 этапа'},{id:'fox',n:'Кицунэ Тёмной Луны',r:4,img:'assets/fox.webp?v=3',d:'⚔️❤️ +10% · 🪙 +60%',gem:1500,lock:'1500 кристаллов'}];
+const SKINS=[{id:'night',n:'Клинок Ночи',r:1,img:'assets/hero.webp?v=5',d:'Начальный облик'},{id:'rosara',n:'Розара',r:3,img:'assets/witch.webp?v=2',d:'⚔️❤️ +10% · <i class="ico coin"></i> +25%',lock:'Победи Розару на 10 этапе'},{id:'priest',n:'Жрица Падшего Света',r:3,img:'assets/priest.webp?v=3',d:'⚔️❤️ +7% · <i class="ico coin"></i> +15%',st:15,lock:'Дойди до 15 этапа'},{id:'fox',n:'Кицунэ Тёмной Луны',r:4,img:'assets/fox.webp?v=3',d:'⚔️❤️ +10% · <i class="ico coin"></i> +60%',gem:1500,lock:'1500 кристаллов'}];
 function chk(){SKINS.forEach(k=>{if(k.st&&S.st>=k.st)S.own[k.id]=1})}
 function applySkin(){const k=SKINS.find(x=>x.id===S.skin)||SKINS[0];$('hsp').querySelector('img').src=k.img}
 act['Скины']=b=>{const k=SKINS.find(x=>x.id===b.dataset.a);chk();if(!S.own[k.id]){if(k.gem&&S.gems>=k.gem){S.gems-=k.gem;S.own[k.id]=1}else return k.gem?'Не хватает кристаллов ('+k.gem+')':k.lock}S.skin=k.id;applySkin();save();return 'Надето: '+k.n};
