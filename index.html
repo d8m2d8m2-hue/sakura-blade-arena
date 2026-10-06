@@ -208,6 +208,14 @@ body.wide .unit{width:34%;bottom:6%}body.wide #hero{left:6%}body.wide #enemy{rig
 body.wide .unit .sp img{height:540px}body.wide #enemy .sp img{height:340px}body.wide #enemy.boss .sp img{height:540px}
 .chs .chi{display:block;width:320px;margin:0 auto 10px;animation:pp .6s}.chb .chi{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 3px #000a)}
 body.wide .gear{overflow-y:auto}body.wide .slot{padding:6px 4px}body.wide .slot .ic{width:68px;height:68px}body.wide .slot .lv{font-size:26px}body.wide .slot small{font-size:19px}body.wide .slot .cost{font-size:22px;margin-top:2px}
+body.wide .unit .sp img{height:calc(var(--fh,610px)*.8)}
+body.wide #enemy .sp img{height:calc(var(--fh,610px)*.55)}body.wide #enemy.boss .sp img{height:calc(var(--fh,610px)*.8)}
+body.wide #enemy .sp svg{height:calc(var(--fh,610px)*.5)}body.wide #enemy.boss .sp svg{height:calc(var(--fh,610px)*.75)}
+body.wide .top{padding-right:150px}body.wide .fl{font-size:34px}body.wide .fl.c{font-size:46px}
+.ov.c{overflow-y:auto;padding:56px 0}.ov.c>.pn{margin:auto}
+body.wide .arm{width:1760px;padding:84px 24px 20px}body.wide .al{flex-direction:row;height:calc(var(--H,1080px) - 200px)}
+body.wide .hr{width:640px;height:100%;flex:none}body.wide .hr>img{height:94%}
+body.wide .eq .it{width:170px;height:200px}body.wide .eq .it .gi{max-width:110px;max-height:110px}body.wide .bg{grid-template-columns:repeat(6,1fr)}
 </style></head><body>
 <div id="app">
  <div class="top"><div class="hh"><div id="av"></div><div><div class="hn"><b id="nm"></b> · Ур. <span id="lvl">1</span></div><div class="hs">Сила: <span id="pw2"></span></div><div class="xp"><i id="xpf"></i></div></div></div><span class="chip"><i class="ico coin"></i><span id="gold">0</span></span><span class="chip"><i class="ico gem"></i><span id="gems">0</span></span><button class="btn o gearbtn" id="cfg" aria-label="Настройки">⚙️</button></div>
@@ -255,7 +263,7 @@ function spawn(){
  $('tbar').style.display=isB?'block':'none';tleft=30;
  ui();if(!$('intro')){if(wave===1&&STORY['s'+S.st])beat('s'+S.st,STORY['s'+S.st]);if(wave===5&&STORY['b'+S.st])beat('b'+S.st,STORY['b'+S.st])}
 }
-function fl(txt,cls,who){const d=document.createElement('div');d.className='fl '+cls;d.textContent=txt;const r=$(who).getBoundingClientRect(),f=$('field').getBoundingClientRect();d.style.left=((r.left-f.left+r.width/2)/K-20+Math.random()*30)+'px';d.style.top=((r.top-f.top)/K+20)+'px';$('field').appendChild(d);setTimeout(()=>d.remove(),900)}
+function fl(txt,cls,who){const d=document.createElement('div');d.className='fl '+cls;d.textContent=txt;const r=$(who).getBoundingClientRect(),f=$('field').getBoundingClientRect();d.style.left=((r.left-f.left+r.width/2)/K-60+Math.random()*120)+'px';d.style.top=((r.top-f.top)/K+20)+'px';$('field').appendChild(d);setTimeout(()=>d.remove(),900)}
 function pulse(id,c){const x=$(id).querySelector('.sp');x.classList.remove(c);void x.offsetWidth;x.classList.add(c)}
 function dmgEnemy(a,skill){
  const c=Math.random()*100<CRIT();let d=Math.floor(a*(.9+Math.random()*.2)*(c?2:1));
@@ -298,8 +306,8 @@ document.addEventListener('click',ev=>{
  if(a){S.auto=!S.auto;save();ui()}
 });
 $('hsp').innerHTML='<img alt="" src="hero.webp?v=5">';for(let i=0;i<10;i++){const d=document.createElement('i');d.className='petal';d.style.cssText='left:'+Math.random()*110+'%;animation-duration:'+(6+Math.random()*6)+'s;animation-delay:-'+Math.random()*9+'s';$('field').appendChild(d)}
-const WITCH='<img alt="" src="witch.webp?v=2">';let K=1;const fit=()=>{const w=innerWidth/innerHeight>1.3,a=$('app');document.body.classList.toggle('wide',w);if(w){const H2=Math.max(900,Math.min(1300,1920*innerHeight/innerWidth));K=Math.min(innerWidth/1920,innerHeight/H2);a.style.width='1920px';a.style.height=H2+'px'}else{const H=Math.max(1700,Math.min(2400,1080*innerHeight/innerWidth));K=Math.min(innerWidth/1080,innerHeight/H);a.style.width='';a.style.height=H+'px'}a.style.setProperty('--k',K)};
-{const b=document.createElement('button');b.id='fs';b.textContent='⛶ F';b.title='Полный экран (F)';const tg=()=>{const W=window.Telegram&&Telegram.WebApp;try{if(W&&W.isVersionAtLeast&&W.isVersionAtLeast('8.0')&&W.requestFullscreen){if(W.isFullscreen)W.exitFullscreen();else W.requestFullscreen();return}}catch(x){}try{if(document.fullscreenElement)document.exitFullscreen();else{const r=document.documentElement;(r.requestFullscreen||r.webkitRequestFullscreen).call(r)}}catch(x){}try{W&&W.expand()}catch(x){}};b.onclick=tg;try{Telegram.WebApp.onEvent('fullscreenFailed',()=>toast('Полный экран недоступен в этой версии Telegram'));Telegram.WebApp.onEvent('fullscreenChanged',()=>setTimeout(fit,150))}catch(x){}document.body.appendChild(b);addEventListener('keydown',ev=>{if((ev.key==='f'||ev.key==='F'||ev.key==='а'||ev.key==='А')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))tg()})}addEventListener('resize',fit);fit();
+const WITCH='<img alt="" src="witch.webp?v=2">';let K=1;const fit=()=>{const w=innerWidth/innerHeight>1.3,a=$('app');document.body.classList.toggle('wide',w);if(w){const H2=Math.max(900,Math.min(1300,1920*innerHeight/innerWidth));K=Math.min(innerWidth/1920,innerHeight/H2);a.style.width='1920px';a.style.height=H2+'px'}else{const H=Math.max(1700,Math.min(2400,1080*innerHeight/innerWidth));K=Math.min(innerWidth/1080,innerHeight/H);a.style.width='';a.style.height=H+'px'}a.style.setProperty('--k',K);a.style.setProperty('--H',a.style.height);a.style.setProperty('--fh',($('field').offsetHeight||610)+'px')};
+{const b=document.createElement('button');b.id='fs';b.textContent='⛶ F';b.title='Полный экран (F)';const tg=()=>{const W=window.Telegram&&Telegram.WebApp;try{if(W&&W.isVersionAtLeast&&W.isVersionAtLeast('8.0')&&W.requestFullscreen){if(W.isFullscreen)W.exitFullscreen();else W.requestFullscreen();return}}catch(x){}try{if(document.fullscreenElement)document.exitFullscreen();else{const r=document.documentElement;(r.requestFullscreen||r.webkitRequestFullscreen).call(r)}}catch(x){}try{W&&W.expand()}catch(x){}};b.onclick=tg;try{Telegram.WebApp.onEvent('fullscreenFailed',()=>toast('Полный экран недоступен в этой версии Telegram'));Telegram.WebApp.onEvent('fullscreenChanged',()=>setTimeout(fit,150))}catch(x){}document.body.appendChild(b);addEventListener('keydown',ev=>{if((ev.key==='f'||ev.key==='F'||ev.key==='а'||ev.key==='А')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))tg()})}addEventListener('resize',fit);fit();setTimeout(fit,500);
 let ti;
 function say(t,cb){clearInterval(ti);const b=$('ibox');let k=0;b.className='';b.textContent='';b.onclick=()=>{if(k<t.length){k=t.length;b.textContent=t;b.classList.add('say')}else cb()};ti=setInterval(()=>{b.textContent=t.slice(0,++k);if(k>=t.length){clearInterval(ti);b.classList.add('say')}},26)}
 function intro(){
